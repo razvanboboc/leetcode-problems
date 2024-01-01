@@ -4,21 +4,25 @@
 
 # Sol 1 - Brute force 
 
-# Sol 2 - Min-Heap 
-
-# Sol 3 - Min-Heap Optimised
+# Sol 2 - Min-Heap - O(Nlogk) time complexity, O(n+k) space complexity
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        hashMap = {}
-        for num in nums:
-            hashMap[num] = 1 + hashMap.get(num, 0)
-        # create a heap 
-        # iterate hashmap 
-            # if len(heap) > k
-                # heappushpop current element 
-            # elif 
-                # heappush current element
-        # initiate array for answer 
-            # iterate heap and push current element 
-        # return answer array
+        if k == len(nums):
+            return nums
+        occurences = {}
+        for i in nums:
+            occurences[i] = occurences.get(i, 0) + 1
+        heap = [] 
+        for i in occurences:
+            if len(heap) == k:
+                heappushpop(heap, [occurences[i], i])
+            else:
+                heappush(heap, [occurences[i], i])
+        ans = []
+        while k > 0: 
+            k -= 1
+            ans.append(heappop(heap)[1])
+        return ans
+
+# Sol 3 - Hash map with buckets TODO
