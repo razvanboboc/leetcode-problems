@@ -25,4 +25,23 @@ class Solution:
             ans.append(heappop(heap)[1])
         return ans
 
-# Sol 3 - Hash map with buckets TODO
+# Sol 3 - Hash map with buckets O(N) time complexity, O(N) space complexity
+    
+# class Solution:
+#     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+#         freqTable = {}
+#         for i in nums:
+#             freqTable[i] = 1 + freqTable.get(i, 0)
+#         bucketArr = [[] for i in range(len(nums))]
+#         for i in freqTable:
+#             bucketArr[freqTable[i] - 1].append(i)
+#         ans = []
+#         for i in range(len(nums), 0, -1):
+#             if len(bucketArr[i - 1]) != 0 and k != 0:
+#                 for j in range(0, len(bucketArr[i - 1])):
+#                     ans.append(bucketArr[i - 1][j])
+#                     k -= 1
+#                     if(k == 0): 
+#                         break
+#         return ans
+
