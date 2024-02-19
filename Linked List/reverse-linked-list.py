@@ -26,3 +26,21 @@ class Solution:
             current = nextNode
         # return head
         return previous
+
+# Recursive Sol - O(n) time space
+    
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # define base case 
+        # if no current head or no existing next head 
+        if (not head) or (not head.next):
+            # return head 
+            return head
+        # init reference to last node by recursive call 
+        lastNode = self.reverseList(head.next)
+        # add link from next node to current node 
+        head.next.next = head
+        # delete link from current node 
+        head.next = None
+        # return reference to new head of reversed list
+        return lastNode
