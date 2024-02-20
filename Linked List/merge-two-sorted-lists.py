@@ -27,3 +27,31 @@ class Solution:
             l2.next = self.mergeTwoLists(l1, l2.next)
             # return head
             return l2 
+        
+# Iterative Solution O(n + m) time, O(1) space
+        
+class Solution:
+    def mergeTwoLists(self, l1, l2):
+        # define preHead node 
+        preHead = ListNode(-1)
+        # define a prev pointer 
+        prev = preHead
+        # while there are still elements in l1 and l2 
+        while l1 and l2:
+            # if l1.val <= l2.val
+            if l1.val <= l2.val:
+                # add link from prev node to this
+                prev.next = l1
+                # shift l1 pointer to next element 
+                l1 = l1.next
+            # else
+            else:
+                # add link from prev node to this
+                prev.next = l2
+                # shift l2 pointer to next element 
+                l2 = l2.next
+            # shift prev node pointer
+            prev = prev.next
+        # prev.next = l1 or l2, depending which is not None
+        prev.next = l1 or l2
+        return preHead.next         
