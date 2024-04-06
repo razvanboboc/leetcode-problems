@@ -9,7 +9,7 @@ class Solution:
             if nums[i] in countMap and countMap[nums[i]] > 0:
                 return True
             countMap[nums[i]] = countMap.get(nums[i], 0) + 1
-        return False    
+        return False
 
 ## Sol 2 - Hash Set
 
